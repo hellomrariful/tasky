@@ -38,7 +38,9 @@ const Navbar = () => {
       <NavLink to="/">Home</NavLink>
       <NavLink to="/services">Why Tasky</NavLink>
       {user ? null : <NavLink to="/register">Register</NavLink>}
-      <NavLink to="/dashboard">Dashboard</NavLink>
+      {
+        user ? <NavLink to="/dashboard">Dashboard</NavLink> : null
+      }
     </nav>
   );
 

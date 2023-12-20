@@ -8,6 +8,9 @@ import Home from "./Pages/Home/Home";
 import AuthProvider from "./Providers/AuthProvider";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
+import PrivateRoute from "./Routes/PrivateRoute";
+import Dashboard from "./Layout/Dashboard";
+import ToDo from "./Pages/Dashboard/ToDo";
 
 const router = createBrowserRouter([
   {
@@ -18,16 +21,25 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-
       },
       {
-        path: '/login',
-        element: <Login></Login>
+        path: "/login",
+        element: <Login></Login>,
       },
       {
-        path: '/register',
-        element: <Register></Register>
-      }
+        path: "/register",
+        element: <Register></Register>,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: "home",
+        element: <ToDo></ToDo>,
+      },
     ],
   },
 ]);

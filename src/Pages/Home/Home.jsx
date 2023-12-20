@@ -1,5 +1,6 @@
 import React from "react";
 import banner from "../../assets/task-management-removebg-preview.png";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -16,9 +17,9 @@ const Home = () => {
           dicta dolorem quasi deleniti maxime quas ab repellat quo sint
           voluptatum?
         </p>
-        <button className="text-xl bg-white mt-3 px-3 py-4 rounded-md">
+        <Link to={'/login'}><button className="text-xl bg-[#FEA946] bg-yea mt-3 px-3 py-4 rounded-md">
           Let’s Explore
-        </button>
+        </button></Link>
       </div>
       <div className="col-span-1">
         <img className="w-full h-full" src={banner} alt="" />

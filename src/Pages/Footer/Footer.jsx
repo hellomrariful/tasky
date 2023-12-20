@@ -17,18 +17,13 @@ const Footer = () => {
               </Link>
 
               <div className="flex flex-wrap justify-center mt-6 ">
-                <a
-                  href="#"
-                  className="mx-4 text-[#858585] transition-colors duration-300 hover:text-[#524FF5]"
-                >
+                <Link to={'/'} className="mx-4 text-[#858585] transition-colors duration-300 hover:text-[#524FF5]">
                   Home
-                </a>
-                <a
-                  href="#"
-                  className="mx-4 text-[#858585] transition-colors duration-300 hover:text-[#524FF5]"
-                >
-                  About
-                </a>
+                </Link>
+                <Link to={'/tasky'} className="mx-4 text-[#858585] transition-colors duration-300 hover:text-[#524FF5]">
+                  Why Tasky
+                </Link>
+               
                 <a
                   href="#"
                   className="mx-4 text-[#858585] transition-colors duration-300 hover:text-[#524FF5]"

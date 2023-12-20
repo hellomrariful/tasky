@@ -97,6 +97,7 @@ const Login = () => {
     
       <div className="flex w-60 items-center text-center mx-auto px-6">
         {/* <img src={tripify} alt="" /> */}
+        
       </div>
       <div className="flex justify-center">
         <div className=" px-8 py-12 bg-[#F7FAFC] rounded-2xl drop-shadow-2xl">
