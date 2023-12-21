@@ -7,76 +7,44 @@ import toast, { Toaster } from "react-hot-toast";
 const Task = () => {
   const { user } = useContext(AuthContext);
   const { register, handleSubmit, reset } = useForm();
-  const axiosPublic = useAxiosPublic()
-
-//   const onSubmit = async (data) => {
-//     console.log(data);
-
-//     const taksiteam = {
-//       email: data.email,
-//       priority: data.priority,
-//       titale: data.titale,
-//       Descriptoin: data.Descriptoin,
-//       Dedline: data.Dedline,
-//       separatelists: data.separatelists,
-//     };
-//     const Taskres = await axios.post("http://localhost:5000/task", taksiteam);
-
-//     console.log(Taskres.data);
-//     if (Taskres.data.insertedId) {
-//       // show  success popup
-//       // reset();
-//       Swal.fire({
-//         position: "top-end",
-//         icon: "success",
-//         title: Add your task,
-//         showConfirmButton: false,
-//         timer: 1500,
-//       });
-   
-//     }
-//   };
-
+  const axiosPublic = useAxiosPublic();
 
   const onSubmit = async (data) => {
-
     const taksiteam = {
-        email: user?.email,
-        priority: data.priority,
-        titale: data.titale,
-        Descriptoin: data.Descriptoin,
-        Dedline: data.Dedline,
-        separatelists: data.separatelists,
-      };
+      email: user?.email,
+      priority: data.priority,
+      titale: data.titale,
+      Descriptoin: data.Descriptoin,
+      Dedline: data.Dedline,
+      separatelists: data.separatelists,
+    };
 
-      console.log(taksiteam);
+    console.log(taksiteam);
 
     axiosPublic.post("/task", taksiteam).then((res) => {
-        console.log(res.data);
-        // e.target.reset();
-        if (res.data.insertedId) {
-            const displayErrorToast = () => {
-                toast.dismiss("error-toast");
-                toast.success("Logged Successfully", {
-                  id: "error-toast",
-                  duration: 2000,
-                  style: {
-                    padding: "14px",
-                    color: "#524FF5",
-                  },
-                  iconTheme: {
-                    primary: "#A1F65E",
-                    secondary: "#FFFFFF",
-                  },
-                });
-              };
-              displayErrorToast();
-              reset()
-        }
-      });
+      console.log(res.data);
+      // e.target.reset();
+      if (res.data.insertedId) {
+        const displayErrorToast = () => {
+          toast.dismiss("error-toast");
+          toast.success("Logged Successfully", {
+            id: "error-toast",
+            duration: 2000,
+            style: {
+              padding: "14px",
+              color: "#524FF5",
+            },
+            iconTheme: {
+              primary: "#A1F65E",
+              secondary: "#FFFFFF",
+            },
+          });
+        };
+        displayErrorToast();
+        reset();
+      }
+    });
   };
-
-
 
   return (
     <div>

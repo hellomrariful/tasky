@@ -1,9 +1,13 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const ToDo = () => {
   const { user } = useContext(AuthContext);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const axiosPublic = useAxiosPublic();
+
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -13,22 +17,38 @@ const ToDo = () => {
     setIsDropdownOpen(false);
   };
 
+
+  const {data: task = []} = useQuery({
+    queryKey: ['task'],
+    queryFn: async () =>{
+        const res = await axiosPublic.get(`/task/${user?.email}`)
+            // console.log(res.data);
+        return res.data
+    }
+  })
+
+  console.log(task);
+
   return (
     <div className="px-5">
       <h1 className="mx-auto text-center mt-5 text-3xl">
         {" "}
         Welcome Back <span>{user?.displayName}, Here Your Daily Task</span>
       </h1>
-
+     
       <div className="grid grid-cols-3 gap-5 mt-10">
+
+
         <div className="bg-[#EEF2F5] px-4">
           <h1 className="text-center mt-3 mb-3">To do</h1>
-
-          <div className="w-full justify-center mx-auto max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+           {
+            task?.map((task) => <>
+            
+            <div className="w-full justify-center mx-auto max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 my-5">
             <div className="px-4 pt-4">
               <div className="relative">
                 <div className="flex justify-between items-center">
-                  <h1 className="">priority</h1>
+                  <h1 className="">{task.priority}</h1>
                   <button
                     id="dropdownButton"
                     onClick={toggleDropdown}
@@ -80,16 +100,15 @@ const ToDo = () => {
             </div>
 
             <div className="p-4">
-              <h1 className="text-2xl">Hero section</h1>
+              <h1 className="text-2xl">{task.titale}</h1>
               <p>
-                Create a design system for a hero section in 2 different
-                variants. Create a simple presentation with these components.
+                {task.Descriptoin}
               </p>
               <div className="flex items-center justify-between mt-4">
                 <span>
                   <img
                     className="object-cover w-10 h-10 rounded-full"
-                    src={user.photoURL}
+                    src={user?.photoURL}
                     alt=""
                   />
                 </span>
@@ -98,6 +117,12 @@ const ToDo = () => {
               </div>
             </div>
           </div>
+          </>)
+           }
+         
+
+
+
         </div>
         <div>
           <h1>In progress</h1>

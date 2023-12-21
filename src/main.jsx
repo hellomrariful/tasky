@@ -38,6 +38,14 @@ const router = createBrowserRouter([
         path: "/profile",
         element: <Profile></Profile>,
       },
+      {
+        path: "/whyTasky",
+        element: <WhyTasky></WhyTasky>,
+      },
+      {
+        path: "/faq",
+        element: <FAQ></FAQ>,
+      },
     ],
   },
   {
@@ -45,32 +53,28 @@ const router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     children: [
       {
-        path: '/dashboard',
-        element: <ToDo></ToDo>
+        path: "/dashboard",
+        element: <ToDo></ToDo>,
       },
       {
-        path: '/dashboard/addTask',
-        element: <Task></Task>
-      }
-     
+        path: "/dashboard/addTask",
+        element: <Task></Task>,
+      },
     ],
   },
-  // {
-  //   path: "/dashboard",
-  //   element: <Dashboard></Dashboard>,
-  //   children: [
-  //     {
-  //       path: "/home",
-  //       element: <ToDo></ToDo>,
-  //     },
-  //   ],
-  // },
 ]);
+
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import WhyTasky from "./Pages/WhyTasky/WhyTasky";
+import FAQ from "./Pages/FAQ/FAQ";
+const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
     </AuthProvider>
   </React.StrictMode>
 );
