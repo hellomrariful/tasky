@@ -2,7 +2,7 @@ import React from "react";
 
 const WhyTasky = () => {
   return (
-    <div>
+    <div className="mt-10">
       <div className="p-8 bg-white rounded-lg shadow dark:bg-gray-800">
         <p className="text-3xl font-bold text-center text-gray-800 dark:text-white">
           Our Beneficially
@@ -10,7 +10,7 @@ const WhyTasky = () => {
         <p className="mb-12 text-xl font-normal text-center text-gray-500 dark:text-gray-200">
           See who gets the best output using Tasky
         </p>
-        <div className="flex flex-col items-center md:flex-row justify evenly">
+        <div className="flex flex-col items-center md:flex-row justify-center">
           <div className="p-4">
             <div className="mb-4 text-center opacity-90">
               <a href="#" className="relative block">
