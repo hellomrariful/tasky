@@ -60,6 +60,10 @@ const router = createBrowserRouter([
         path: "/dashboard/addTask",
         element: <Task></Task>,
       },
+      {
+        path: "/dashboard/updateTask/:id",
+        element: <UpdateTask></UpdateTask>,
+      },
     ],
   },
 ]);
@@ -68,6 +72,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import WhyTasky from "./Pages/WhyTasky/WhyTasky";
 import FAQ from "./Pages/FAQ/FAQ";
 import PrivateRoute from "./Routes/PrivateRoute";
+import UpdateTask from "./Pages/Dashboard/UpdateTask";
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")).render(

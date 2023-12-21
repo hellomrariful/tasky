@@ -3,6 +3,7 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const ToDo = () => {
   const { user } = useContext(AuthContext);
@@ -16,6 +17,8 @@ const ToDo = () => {
       return res.data;
     },
   });
+
+
 
   // State to manage the dropdown state for each task
   const [openDropdownMap, setOpenDropdownMap] = useState({});
@@ -52,6 +55,8 @@ const ToDo = () => {
       }
     });
   };
+
+
 
   return (
     <div className="px-5">
@@ -102,13 +107,10 @@ const ToDo = () => {
                       aria-labelledby={`dropdownButton-${task._id}`}
                     >
                       <li>
-                        <a
-                          href="#"
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                          onClick={() => toggleDropdown(task._id)}
-                        >
-                          Edit
-                        </a>
+                        <Link to={`/dashboard/updateTask/${task._id}`} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                          Update
+                        </Link>
+                       
                       </li>
                       <li>
                         <a
