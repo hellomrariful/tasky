@@ -20,16 +20,13 @@ const Footer = () => {
                 <Link to={'/'} className="mx-4 text-[#858585] transition-colors duration-300 hover:text-[#524FF5]">
                   Home
                 </Link>
-                <Link to={'/tasky'} className="mx-4 text-[#858585] transition-colors duration-300 hover:text-[#524FF5]">
+                <Link to={'/whyTasky'} className="mx-4 text-[#858585] transition-colors duration-300 hover:text-[#524FF5]">
                   Why Tasky
                 </Link>
-               
-                <a
-                  href="#"
-                  className="mx-4 text-[#858585] transition-colors duration-300 hover:text-[#524FF5]"
-                >
-                  Terms & Condition
-                </a>
+
+                <Link to={'/faq'} className="mx-4 text-[#858585] transition-colors duration-300 hover:text-[#524FF5]">
+                  FAQ
+                </Link>
                 <a
                   href="#"
                   className="mx-4 text-[#858585] transition-colors duration-300 hover:text-[#524FF5]"
@@ -46,7 +43,7 @@ const Footer = () => {
                 <p className=" text-[#858585] dark:text-gray-300 ">
                   <Link to={"/"}>
                     {" "}
-                    <span className="font-heading">© Anolipi 2023</span>
+                    <span className="font-heading">© Tasky 2023</span>
                   </Link>
                   . All Rights Reserved.
                 </p>

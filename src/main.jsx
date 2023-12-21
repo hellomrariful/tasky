@@ -9,8 +9,9 @@ import AuthProvider from "./Providers/AuthProvider";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 import Dashboard from "./Layout/Dashboard";
-import Task from "./Pages/Dashboard/Task";
 import Profile from "./Pages/Profile/Profile";
+import ToDo from "./Pages/Dashboard/ToDo";
+import Task from "./Pages/Dashboard/Task";
 // import PrivateRoute from "./Routes/PrivateRoute";
 // import Dashboard from "./Layout/Dashboard";
 // import ToDo from "./Pages/Dashboard/ToDo";
@@ -44,9 +45,14 @@ const router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     children: [
       {
-        path: "",
-        element: <Task></Task>,
+        path: '/dashboard',
+        element: <ToDo></ToDo>
       },
+      {
+        path: '/dashboard/addTask',
+        element: <Task></Task>
+      }
+     
     ],
   },
   // {

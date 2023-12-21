@@ -36,8 +36,9 @@ const Navbar = () => {
   const NavLinks = (
     <nav className="flex gap-3 md:gap-4 lg:gap-10 lg:text-xl text-[18px]">
       <NavLink to="/">Home</NavLink>
-      <NavLink to="/services">Why Tasky</NavLink>
+      <NavLink to="/whyTasky">Why Tasky</NavLink>
       <NavLink to='/profile'>Profile</NavLink>
+      <NavLink to='/faq'>FAQ</NavLink>
       {user ? null : <NavLink to="/register">Register</NavLink>}
       {
         user ? <NavLink to="/dashboard">Dashboard</NavLink> : null
