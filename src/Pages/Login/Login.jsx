@@ -84,7 +84,7 @@ const Login = () => {
 
         
         setTimeout(() => {
-          navigate(location?.state ? location.state : "/");
+          navigate(location?.state ? location.state : "/dashboard");
         }, 1000);
       })
       .catch((error) => {

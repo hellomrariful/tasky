@@ -8,9 +8,12 @@ import Home from "./Pages/Home/Home";
 import AuthProvider from "./Providers/AuthProvider";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
-import PrivateRoute from "./Routes/PrivateRoute";
 import Dashboard from "./Layout/Dashboard";
-import ToDo from "./Pages/Dashboard/ToDo";
+import Task from "./Pages/Dashboard/Task";
+import Profile from "./Pages/Profile/Profile";
+// import PrivateRoute from "./Routes/PrivateRoute";
+// import Dashboard from "./Layout/Dashboard";
+// import ToDo from "./Pages/Dashboard/ToDo";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +33,10 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
       },
+      {
+        path: "/profile",
+        element: <Profile></Profile>,
+      },
     ],
   },
   {
@@ -37,11 +44,21 @@ const router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     children: [
       {
-        path: "home",
-        element: <ToDo></ToDo>,
+        path: "",
+        element: <Task></Task>,
       },
     ],
   },
+  // {
+  //   path: "/dashboard",
+  //   element: <Dashboard></Dashboard>,
+  //   children: [
+  //     {
+  //       path: "/home",
+  //       element: <ToDo></ToDo>,
+  //     },
+  //   ],
+  // },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
