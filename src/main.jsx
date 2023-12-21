@@ -12,9 +12,6 @@ import Dashboard from "./Layout/Dashboard";
 import Profile from "./Pages/Profile/Profile";
 import ToDo from "./Pages/Dashboard/ToDo";
 import Task from "./Pages/Dashboard/Task";
-// import PrivateRoute from "./Routes/PrivateRoute";
-// import Dashboard from "./Layout/Dashboard";
-// import ToDo from "./Pages/Dashboard/ToDo";
 
 const router = createBrowserRouter([
   {
@@ -36,7 +33,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <PrivateRoute><Profile></Profile></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <Profile></Profile>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/whyTasky",

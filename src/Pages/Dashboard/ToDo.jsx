@@ -18,12 +18,8 @@ const ToDo = () => {
     },
   });
 
-
-
-  // State to manage the dropdown state for each task
   const [openDropdownMap, setOpenDropdownMap] = useState({});
 
-  // Function to toggle the dropdown for a specific task
   const toggleDropdown = (taskId) => {
     setOpenDropdownMap((prevMap) => ({
       ...prevMap,
@@ -56,8 +52,6 @@ const ToDo = () => {
     });
   };
 
-
-
   return (
     <div className="px-5">
       <h1 className="mx-auto text-center mt-5 text-3xl">
@@ -65,7 +59,7 @@ const ToDo = () => {
         Welcome Back <span>{user?.displayName}, Here Your Daily Task</span>
       </h1>
 
-      <div className="grid grid-cols-3 gap-5 mt-10">
+      <div className="grid lg:grid-cols-3 gap-5 mt-10">
         <div className="bg-[#EEF2F5] px-4">
           <h1 className="text-center mt-3 mb-3">To do</h1>
           {task?.map((task) => (
@@ -107,17 +101,18 @@ const ToDo = () => {
                       aria-labelledby={`dropdownButton-${task._id}`}
                     >
                       <li>
-                        <Link to={`/dashboard/updateTask/${task._id}`} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                        <Link
+                          to={`/dashboard/updateTask/${task._id}`}
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                        >
                           Update
                         </Link>
-                       
                       </li>
                       <li>
                         <a
                           href="#"
                           className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                           onClick={() => handelDelete(task._id)}
-                          
                         >
                           Delete
                         </a>

@@ -17,10 +17,10 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen grid grid-cols-3 mt-10">
+    <div className="min-h-screen grid md:grid-cols-3 mt-10">
       {/* sidebar left */}
-      <div className="w-60 dark:bg-gray-900 dark:text-gray-100 col-span-1">
-        <div className="flex items-center p-2 space-x-4">
+      <div className="md:col-span-1">
+        <div className="flex items-center p-2 space-x-4 mx-auto justify-center ">
           <img
             src={user?.photoURL}
             className="w-12 h-12 rounded-full dark:bg-gray-500"
@@ -35,7 +35,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="divide-y dark:divide-gray-700 mt-3">
+        <div className="divide-y dark:divide-gray-700 mt-3 text-center mx-auto justify-center grid">
           <ul className="pt-2 pb-4 space-y-1 text-sm">
             <li className="dark:bg-gray-800 dark:text-gray-50">
               <NavLink className="flex items-center p-1 gap-1 rounded-md">
@@ -103,7 +103,7 @@ const Dashboard = () => {
       </div>
 
       {/* sidebar right */}
-      <div className="col-span-2 border">
+      <div className="md:col-span-2 border">
         <Outlet></Outlet>
       </div>
     </div>
