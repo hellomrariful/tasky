@@ -37,12 +37,8 @@ const Navbar = () => {
     <nav className="flex gap-3 md:gap-4 lg:gap-10 lg:text-xl text-[18px]">
       <NavLink to="/">Home</NavLink>
       <NavLink to="/whyTasky">Why Tasky</NavLink>
-      <NavLink to='/profile'>Profile</NavLink>
-      <NavLink to='/faq'>FAQ</NavLink>
+      <NavLink to="/faq">FAQ</NavLink>
       {user ? null : <NavLink to="/register">Register</NavLink>}
-      {
-        user ? <NavLink to="/dashboard">Dashboard</NavLink> : null
-      }
     </nav>
   );
 
@@ -105,6 +101,16 @@ const Navbar = () => {
                         <button>Home</button>
                       </NavLink>
                     </li>
+                    <li className="block px-4 py-2 text-gray-700 hover:bg-gray-100 text-center">
+                      <NavLink to="/dashboard">
+                        <button>Dashboard</button>
+                      </NavLink>
+                    </li>
+                    <li className="block px-4 py-2 text-gray-700 hover:bg-gray-100 text-center">
+                      <NavLink to="/profile">
+                        <button>Profile</button>
+                      </NavLink>
+                    </li>
                     <li className="block px-4 py-2 text-gray-700 hover:bg-gray-100  text-center">
                       <button onClick={handelSignOut}>Sign Out</button>
                     </li>
@@ -150,31 +156,11 @@ const Navbar = () => {
               <li className="block text-gray-900  hover:text-blue-700">
                 <NavLink to="/">Home</NavLink>
               </li>
-              <NavLink to="/services">Services</NavLink>
+              <NavLink to="/whyTasky">Why Tasky</NavLink>
 
               <li className="block text-gray-900  hover:text-blue-700">
-                <NavLink to="/gallery">Gallery</NavLink>
+                <NavLink to="/faq">FAQ</NavLink>
               </li>
-              <div className="relative group">
-                <NavLink onClick={toggleDashboardMenu}>Dashboard</NavLink>
-                <ul
-                  className={`${
-                    isDashboardMenuOpen ? "block" : "hidden"
-                  } bg-white text-gray-700 group-hover:block absolute mt-2 space-y-2 px-4 py-2 border border-gray-200 rounded-lg shadow-lg`}
-                >
-                  <li>
-                    <NavLink to="/dashboard/AddServices">Add Services</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/dashboard/ManageServices">
-                      Manage Services
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/dashboard/MySchedules">My Schedules</NavLink>
-                  </li>
-                </ul>
-              </div>
               {user ? (
                 <>
                   <li className="block px-4 py-2 text-gray-700 hover:bg-gray-100  text-center">

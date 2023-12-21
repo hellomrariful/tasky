@@ -45,7 +45,7 @@ const Profile = () => {
           </p>
           {/* <p className="text-xs text-gray-400">FullStack dev.</p> */}
           <div className="flex items-center justify-between w-full gap-4 mt-3">
-            <Button onClick={handelSignOut} className="mx-auto">
+            <Button onClick={handelSignOut} className="mx-auto bg-[#FEA946]">
               Log Out
             </Button>
           </div>

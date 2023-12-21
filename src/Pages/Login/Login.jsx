@@ -13,9 +13,9 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-//   function onChange(value) {
-//     console.log("Captcha value:", value);
-//   }
+  //   function onChange(value) {
+  //     console.log("Captcha value:", value);
+  //   }
 
   const { signInUser, signUpWithGoogle } = useContext(AuthContext);
 
@@ -82,7 +82,6 @@ const Login = () => {
         };
         displayErrorToast();
 
-        
         setTimeout(() => {
           navigate(location?.state ? location.state : "/dashboard");
         }, 1000);
@@ -94,15 +93,13 @@ const Login = () => {
 
   return (
     <div>
-    
       <div className="flex w-60 items-center text-center mx-auto px-6">
         {/* <img src={tripify} alt="" /> */}
-        
       </div>
       <div className="flex justify-center">
         <div className=" px-8 py-12 bg-[#F7FAFC] rounded-2xl drop-shadow-2xl">
           <div className="relative flex flex-col shadow-none">
-            <h4 className="block text-center text-[22px]">Log in to Tripify</h4>
+            <h4 className="block text-center text-[22px]">Log in to Tasky</h4>
             {/* <div className="mx-auto mt-5">
               <ReCAPTCHA sitekey="6LelPTApAAAAADWVe8dSbkcjltECOr38kOEygA9u" onChange={onChange} />
             </div> */}
