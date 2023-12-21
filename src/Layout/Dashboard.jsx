@@ -66,27 +66,9 @@ const Dashboard = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="newses"
-                className="flex items-center p-1 gap-1 rounded-md"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
-                  className="w-5 h-5 fill-current dark:text-gray-400"
-                >
-                  <path d="M480 456c0 30.9-25.1 56-56 56H88c-30.9 0-56-25.1-56-56V296c0-26.5 21.5-48 48-48s48 21.5 48 48v160c0 8.8 7.2 16 16 16s16-7.2 16-16V296c0-26.5 21.5-48 48-48s48 21.5 48 48v160c0 8.8 7.2 16 16 16s16-7.2 16-16V296c0-26.5 21.5-48 48-48s48 21.5 48 48v160c0 8.8 7.2 16 16 16s16-7.2 16-16V296c0-26.5 21.5-48 48-48s48 21.5 48 48v160zM376 168c-50.6 0-92 41.4-92 92s41.4 92 92 92 92-41.4 92-92-41.4-92-92-92zM376 328c-35.3 0-64-28.7-64-64s28.7-64 64-64 64 28.7 64 64-28.7 64-64 64z"></path>
-                </svg>
-                Newses
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="publisher"
-                className="flex items-center p-1 gap-1 rounded-md"
-              >
+              <NavLink className="flex items-center p-1 gap-1 rounded-md">
                 <FaBook></FaBook>
-                Publisher
+                Notification
               </NavLink>
             </li>
           </ul>
