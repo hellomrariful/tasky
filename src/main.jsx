@@ -69,6 +69,10 @@ const router = createBrowserRouter([
         path: "/dashboard/updateTask/:id",
         element: <UpdateTask></UpdateTask>,
       },
+      {
+        path: "/dashboard/notification",
+        element: <Notification></Notification>,
+      },
     ],
   },
 ]);
@@ -78,6 +82,7 @@ import WhyTasky from "./Pages/WhyTasky/WhyTasky";
 import FAQ from "./Pages/FAQ/FAQ";
 import PrivateRoute from "./Routes/PrivateRoute";
 import UpdateTask from "./Pages/Dashboard/UpdateTask";
+import Notification from "./Pages/Dashboard/Notification";
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")).render(

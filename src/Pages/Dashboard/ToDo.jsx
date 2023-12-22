@@ -5,6 +5,7 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import moment from "moment";
 
 const ToDo = () => {
   const { user } = useContext(AuthContext);
@@ -12,6 +13,7 @@ const ToDo = () => {
   const [todo, setTodo] = useState([]);
   const [progress, setProgress] = useState([]);
   const [completed, setCompleted] = useState([]);
+  const [mounted, setMounted] = useState(true); // Add mounted state
 
   const { data: task = [], refetch } = useQuery({
     queryKey: ["task"],
@@ -59,7 +61,10 @@ const ToDo = () => {
       if (result.isConfirmed) {
         axiosPublic.delete(`/task/${id}`).then((res) => {
           if (res.data.deletedCount > 0) {
-            refetch();
+            // Check if the component is still mounted before calling refetch
+            if (mounted) {
+              refetch();
+            }
             Swal.fire({
               title: "Deleted!",
               text: "Your file has been deleted.",
@@ -96,6 +101,12 @@ const ToDo = () => {
       });
   };
 
+  useEffect(() => {
+    return () => {
+      setMounted(false);
+    };
+  }, []);
+
   return (
     <div className="px-5">
       <div className="flex justify-center items-center content-center mt-5">
@@ -104,22 +115,6 @@ const ToDo = () => {
           <span className=" text-blue-500">{user?.displayName},</span> Here Your
           Daily Task
         </h1>
-        <p className="">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-8 h-8"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0"
-            />
-          </svg>
-        </p>
       </div>
 
       <div className="grid lg:grid-cols-3 gap-5 mt-10">
@@ -132,8 +127,8 @@ const ToDo = () => {
                   ref={provided.innerRef}
                   className="bg-[#EEF2F5] px-4"
                 >
-                  <div className="h-[500px]">
-                    <h1 className="text-center mt-3 mb-3">todo</h1>
+                  <div className="h-fit pb-4">
+                    <h1 className="text-center my-3 pt-4 mb-3">To Do</h1>
                     {todo?.map((task, index) => (
                       <Draggable
                         key={task._id}
@@ -206,17 +201,32 @@ const ToDo = () => {
                             </div>
 
                             <div className="p-4">
-                              <h1 className="text-2xl">{task.Title}</h1>
-                              <p>{task.Description}</p>
+                              <h1 className="text-2xl truncate">
+                                {task.Title}
+                              </h1>
+                              <p className="mt-2 truncate">
+                                {task.Description}
+                              </p>
                               <div className="flex items-center justify-between mt-4">
                                 <span>
-                                  <img
-                                    className="object-cover w-10 h-10 rounded-full"
-                                    src={user?.photoURL}
-                                    alt=""
-                                  />
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    strokeWidth={1.5}
+                                    stroke="currentColor"
+                                    className="w-6 h-6"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                                    />
+                                  </svg>
                                 </span>
-                                <span>10 January</span>
+                                <span>
+                                  {moment(task.Deadline).format("ll")}
+                                </span>
                               </div>
                             </div>
                           </div>
@@ -239,8 +249,8 @@ const ToDo = () => {
                   ref={provided.innerRef}
                   className="bg-[#EEF2F5] px-4"
                 >
-                  <div className="h-[500px]">
-                    <h1 className="text-center mt-3 mb-3">progress</h1>
+                  <div className="h-fit pb-4">
+                    <h1 className="text-center mt-3 pt-4 mb-3">Ongoing</h1>
                     {progress?.map((task, index) => (
                       <Draggable
                         key={task._id}
@@ -313,17 +323,32 @@ const ToDo = () => {
                             </div>
 
                             <div className="p-4">
-                              <h1 className="text-2xl">{task.Title}</h1>
-                              <p>{task.Description}</p>
+                              <h1 className="text-2xl truncate">
+                                {task.Title}
+                              </h1>
+                              <p className="mt-2 truncate">
+                                {task.Description}
+                              </p>
                               <div className="flex items-center justify-between mt-4">
                                 <span>
-                                  <img
-                                    className="object-cover w-10 h-10 rounded-full"
-                                    src={user?.photoURL}
-                                    alt=""
-                                  />
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    strokeWidth={1.5}
+                                    stroke="currentColor"
+                                    className="w-6 h-6"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                                    />
+                                  </svg>
                                 </span>
-                                <span>10 January</span>
+                                <span>
+                                  {moment(task.Deadline).format("ll")}
+                                </span>
                               </div>
                             </div>
                           </div>
@@ -346,8 +371,8 @@ const ToDo = () => {
                   ref={provided.innerRef}
                   className="bg-[#EEF2F5] px-4"
                 >
-                  <div className="h-[500px]">
-                    <h1 className="text-center mt-3 mb-3">Complete</h1>
+                  <div className="h-fit pb-4">
+                    <h1 className="text-center mt-3 pt-4 mb-3">Complete</h1>
                     {completed?.map((task, index) => (
                       <Draggable
                         key={task._id}
@@ -420,17 +445,32 @@ const ToDo = () => {
                             </div>
 
                             <div className="p-4">
-                              <h1 className="text-2xl">{task.Title}</h1>
-                              <p>{task.Description}</p>
+                              <h1 className="text-2xl truncate">
+                                {task.Title}
+                              </h1>
+                              <p className="mt-2 truncate">
+                                {task.Description}
+                              </p>
                               <div className="flex items-center justify-between mt-4">
                                 <span>
-                                  <img
-                                    className="object-cover w-10 h-10 rounded-full"
-                                    src={user?.photoURL}
-                                    alt=""
-                                  />
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    strokeWidth={1.5}
+                                    stroke="currentColor"
+                                    className="w-6 h-6"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                                    />
+                                  </svg>
                                 </span>
-                                <span>10 January</span>
+                                <span>
+                                  {moment(task.Deadline).format("ll")}
+                                </span>
                               </div>
                             </div>
                           </div>

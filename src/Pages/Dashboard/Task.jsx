@@ -17,13 +17,13 @@ const Task = () => {
       Description: data.Description,
       Deadline: data.Deadline,
       status: "todo",
+      addTime: new Date()
     };
 
     console.log(taskInfo);
 
     axiosPublic.post("/task", taskInfo).then((res) => {
       console.log(res.data);
-      // e.target.reset();
       if (res.data.insertedId) {
         const displayErrorToast = () => {
           toast.dismiss("error-toast");

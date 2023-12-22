@@ -11,7 +11,7 @@ const UpdateTask = () => {
   const { register, handleSubmit, reset } = useForm();
   const axiosPublic = useAxiosPublic();
 
-  const { data: task = [] } = useQuery({
+  const { data: task = [], refetch } = useQuery({
     queryKey: ["task"],
     queryFn: async () => {
       const res = await axiosPublic.get(`/task/${user?.email}`);
@@ -32,6 +32,7 @@ const UpdateTask = () => {
       Description: data.Description,
       Deadline: data.Deadline,
       status: "todo",
+      update: new Date()
     };
 
     console.log(taskInfo);
@@ -55,8 +56,8 @@ const UpdateTask = () => {
             },
           });
         };
+        refetch
         displayErrorToast();
-        reset();
       }
     });
   };
@@ -78,7 +79,7 @@ const UpdateTask = () => {
         </div>
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Add Your Task
+            Update Your Task
           </h2>
           <p className="mt-2 text-lg leading-8 text-gray-600">
             Record your daily tasks effortlessly
