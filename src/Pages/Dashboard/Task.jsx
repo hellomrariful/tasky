@@ -129,8 +129,8 @@ const Task = () => {
                     Select a priority
                   </option>
                   <option value="Low">Low</option>
-                  <option value="Moderate">Moderate</option>
                   <option value="High">High</option>
+                  <option value="Immediate">Immediate</option>
                 </select>
               </div>
             </div>

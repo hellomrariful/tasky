@@ -22,8 +22,8 @@ const Profile = () => {
   };
 
   return (
-    <div>
-      <div className="w-96 bg-white shadow-lg rounded-2xl dark:bg-gray-800 mx-auto mt-10">
+    <div className="mx-auto justify-center items-center flex">
+      <div className="w-96 bg-white shadow-lg rounded-2xl dark:bg-gray-800 mx-auto mt-10 ">
         <img
           alt="profile"
           src="https://www.jacadatravel.com/wp-content/uploads/fly-images/366978/Switzerland-cover-1280x560-cc.jpg"
