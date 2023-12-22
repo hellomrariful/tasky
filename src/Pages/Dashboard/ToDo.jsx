@@ -19,7 +19,6 @@ const ToDo = () => {
     queryKey: ["task"],
     queryFn: async () => {
       const res = await axiosPublic.get(`/task/${user?.email}`);
-      // console.log(res.data);
       return res.data;
     },
   });
@@ -167,7 +166,7 @@ const ToDo = () => {
                                     </svg>
                                   </button>
                                 </div>
-                                {/* Dropdown menu */}
+
                                 <div
                                   id={`dropdown-${task._id}`}
                                   className={`absolute right-0 z-50 ${

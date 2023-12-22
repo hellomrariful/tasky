@@ -39,7 +39,6 @@ const UpdateTask = () => {
 
     axiosPublic.put(`/task/${id}`, taskInfo).then((res) => {
       console.log(res.data);
-      // e.target.reset();
       if (res.data.modifiedCount > 0) {
         const displayErrorToast = () => {
           toast.dismiss("error-toast");
@@ -58,6 +57,7 @@ const UpdateTask = () => {
         };
         refetch
         displayErrorToast();
+      
       }
     });
   };
