@@ -13,7 +13,7 @@ const Home = () => {
           <br />
           Your Daily Task
         </h1>
-        <p className="my-2 text-gray-800 text-center md:text-left">
+        <p className="my-2 text-gray-800 text-center md:text-left text-xl">
           Efficiently organize and prioritize your daily tasks with our
           intuitive task management system, ensuring enhanced productivity and
           stress-free planning for a more balanced day.
