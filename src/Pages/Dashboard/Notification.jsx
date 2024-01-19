@@ -5,7 +5,7 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import moment from "moment";
 
 const Notification = () => {
-  const { user } = useContext(AuthContext); // Ensure you have access to the user context
+  const { user } = useContext(AuthContext);
   const axiosPublic = useAxiosPublic();
 
   const { data: tasks = [], refetch } = useQuery({

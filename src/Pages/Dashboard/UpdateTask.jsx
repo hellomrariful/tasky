@@ -32,7 +32,7 @@ const UpdateTask = () => {
       Description: data.Description,
       Deadline: data.Deadline,
       status: "todo",
-      update: new Date()
+      update: new Date(),
     };
 
     console.log(taskInfo);
@@ -55,9 +55,8 @@ const UpdateTask = () => {
             },
           });
         };
-        refetch
+        refetch;
         displayErrorToast();
-      
       }
     });
   };
